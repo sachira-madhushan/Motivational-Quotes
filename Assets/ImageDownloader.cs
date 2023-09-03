@@ -10,6 +10,7 @@ public class ImageDownloader : MonoBehaviour
 {
     public Image imagePrefab;
     public ToastMessage toastMessage;
+    public AdManager admanager;
     //public Button downloadButtonPrefab; // Reference to your download button prefab
     public Transform content;
     private RectTransform targetRectTransform;
@@ -88,6 +89,7 @@ public class ImageDownloader : MonoBehaviour
     private void SaveImageToLocal(string imageName, Texture2D texture)
     {
         // Save the image to local storage (e.g., persistentDataPath)
+        admanager.ShowNonRewardedAd();
         byte[] bytes = texture.EncodeToPNG();
         string downloadPath = "/storage/emulated/0/Download/";
         string filePath = Path.Combine(downloadPath, imageName);
